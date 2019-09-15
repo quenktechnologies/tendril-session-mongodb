@@ -1,7 +1,7 @@
 {
     "name": "@quenk/tendril-session-mongodb",
     "description": "Provides tendril session storage via MongoDB",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "main": "lib/index.js",
     "dependencies": {
         "@quenk/noni": "^1.31.3",

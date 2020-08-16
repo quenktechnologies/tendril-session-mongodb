@@ -1,15 +1,11 @@
 /// <reference path="@types/connect-mongodb-session/index.d.ts" />
-import * as cmongo from 'connect-mongodb-session';
-import * as express from 'express';
-import s = require('express-session');
+import * as session from 'express-session';
+import { Future } from '@quenk/noni/lib/control/monad/future';
+import { SessionFunc, SessionStoreProvider } from '@quenk/tendril/lib/app/middleware/session/store/provider';
 /**
- * Options
+ * MongoDBProvider for using MongoDB as the store for tendril session data.
  */
-export interface Options {
-    store: cmongo.ConnectionInfo;
-    session: s.SessionOptions;
+export declare class MongoDBProvider implements SessionStoreProvider {
+    create(expressSession: SessionFunc, opts?: object): Future<session.Store>;
 }
-/**
- * session middleware.
- */
-export declare const session: (opts: Options) => express.Handler;
+export declare const provider: MongoDBProvider;

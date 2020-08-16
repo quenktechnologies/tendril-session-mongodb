@@ -10,6 +10,7 @@
         "express-session": "^1.16.2"
     },
     "devDependencies": {
+        "@quenk/tendril": "^0.40.5",
         "@types/connect-mongodb-session": "0.0.0",
         "@types/express": "^4.17.1",
         "@types/express-session": "^1.15.14",

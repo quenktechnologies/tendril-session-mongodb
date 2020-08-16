@@ -1,7 +1,8 @@
 # Tendril Session MongoDB
 
-This module provides a `session` function that can be used with tendril
-to configure sessions stored in a mongodb instance.
+Provides a MongoDB backed `SessionStoreProvider` for use with [tendril][tendril]
+
+[tendril]: https://github.com/quenktechnologies/tendril
 
 # License
 

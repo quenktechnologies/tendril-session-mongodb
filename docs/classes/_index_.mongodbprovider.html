@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@quenk/tendril-session-mongodb - v0.0.3 | @quenk/tendril-session-mongodb - v0.0.3</title>
+	<title>MongoDBProvider | @quenk/tendril-session-mongodb - v0.0.3</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -2335,7 +2335,7 @@ img {
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="index.html">@quenk/tendril-session-mongodb - v0.0.3</a></strong>
+					<strong><a href="../index.html">@quenk/tendril-session-mongodb - v0.0.3</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -2363,31 +2363,82 @@ img {
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
+		<li class="current tsd-kind-class tsd-parent-kind-external-module">
+			<a href="_index_.mongodbprovider.html" class="tsd-kind-icon">MongoDBProvider</a>
+			<ul>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_index_.mongodbprovider.html#create" class="tsd-kind-icon">create</a>
+				</li>
+			</ul>
+		</li>
+		<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+			<a href="../modules/_index_.html#provider" class="tsd-kind-icon">provider</a>
+		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<div class="tsd-panel tsd-typography">
-			<a href="#tendril-session-mongodb" id="tendril-session-mongodb" style="color: inherit; text-decoration: none;">
-				<h1>Tendril Session MongoDB</h1>
-			</a>
-			<p>Provides a MongoDB backed <code>SessionStoreProvider</code> for use with <a href="https://github.com/quenktechnologies/tendril">tendril</a></p>
-			<a href="#license" id="license" style="color: inherit; text-decoration: none;">
-				<h1>License</h1>
-			</a>
-			<p>Apache-2.0 (C) 2019 Quenk Technologies Limited</p>
-		</div>
+		<section class="tsd-panel tsd-comment">
+			<div class="tsd-comment tsd-typography">
+				<div class="lead">
+					<p>MongoDBProvider for using MongoDB as the store for tendril session data.</p>
+				</div>
+			</div>
+		</section>
+		<section class="tsd-panel tsd-hierarchy">
+			<h3>Hierarchy</h3>
+			<ul class="tsd-hierarchy">
+				<li>
+					<span class="target">MongoDBProvider</span>
+				</li>
+			</ul>
+		</section>
+		<section class="tsd-panel">
+			<h3>Implements</h3>
+			<ul class="tsd-hierarchy">
+				<li><span class="tsd-signature-type">SessionStoreProvider</span></li>
+			</ul>
+		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section ">
-						<h3>External modules</h3>
+						<h3>Methods</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-external-module"><a href="modules/_index_.html" class="tsd-kind-icon">&quot;index&quot;</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_index_.mongodbprovider.html#create" class="tsd-kind-icon">create</a></li>
 						</ul>
 					</section>
 				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="create" class="tsd-anchor"></a>
+				<h3>create</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>expressSession<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessionFunc</span>, opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Future</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Store</span><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/quenktechnologies/tendril-session-mongodb/blob/c419767/lib/index.ts#L20">index.ts:20</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>expressSession: <span class="tsd-signature-type">SessionFunc</span></h5>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> opts: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Future</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Store</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer class="with-border-bottom">

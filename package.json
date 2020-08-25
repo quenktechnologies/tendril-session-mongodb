@@ -3,6 +3,7 @@
     "description": "Provides tendril session storage via MongoDB",
     "version": "0.1.0",
     "main": "lib/index.js",
+    "files": ["lib"],
     "dependencies": {
         "@quenk/noni": "^1.40.2",
         "connect-mongodb-session": "^2.4.1",

@@ -7,13 +7,13 @@
         "lib"
     ],
     "dependencies": {
-        "@quenk/noni": "^1.40.2",
+        "@quenk/noni": "^1.40.6",
         "connect-mongodb-session": "^2.4.1",
         "express": "^4.17.1",
         "express-session": "^1.16.2"
     },
     "devDependencies": {
-        "@quenk/tendril": "^0.41.0",
+        "@quenk/tendril": "^0.41.5",
         "@types/connect-mongodb-session": "0.0.3",
         "@types/express": "^4.17.1",
         "@types/express-session": "^1.15.14",

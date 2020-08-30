@@ -6,33 +6,72 @@ import * as cmongo from 'connect-mongodb-session';
 import { MongoDBStore } from 'connect-mongodb-session';
 
 import { isString } from '@quenk/noni/lib/data/type';
-import { Future, raise, pure } from '@quenk/noni/lib/control/monad/future';
+import { Maybe, nothing, just } from '@quenk/noni/lib/data/maybe';
+import {
+    Future,
+    raise,
+    pure,
+    fromCallback
+} from '@quenk/noni/lib/control/monad/future';
 import {
     SessionFunc,
-    SessionStoreProvider
-} from '@quenk/tendril/lib/app/middleware/session/store/provider';
+    SessionStoreConnection
+} from '@quenk/tendril/lib/app/middleware/session/store/connection';
 
 /**
- * MongoDBProvider for using MongoDB as the store for tendril session data.
+ * MongoDBConnection allows MongoDB to be used as tendril session stores.
  */
-export class MongoDBProvider implements SessionStoreProvider {
+export class MongoDBConnection implements SessionStoreConnection {
 
-    create(expressSession: SessionFunc, opts?: object): Future<session.Store> {
+    constructor(
+        public expressSession: SessionFunc,
+        public opts?: object) { }
 
-        let Cons: MongoDBStore = cmongo(expressSession);
+    client: Maybe<cmongo.MongoDBStore> = nothing();
 
-        opts = opts ? opts : {};
+    open(): Future<void> {
 
-        if (!isString((<{ uri: string }>opts).uri))
-            return uriNotConfiguredError();
+        let { opts, expressSession } = this;
 
-        return pure(<session.Store>new Cons(<cmongo.ConnectionInfo>opts));
+        return fromCallback(cb => {
+
+            let Cons: MongoDBStore = cmongo(expressSession);
+
+            if (!isString((<{ uri: string }>opts).uri))
+                return cb(uriNotConfiguredErr());
+
+            this.client = just(new Cons(<cmongo.ConnectionInfo>opts));
+
+            cb(null);
+
+        });
+
+    }
+
+    checkout(): Future<session.Store> {
+
+        return <Future<session.Store>>(this.client.isNothing() ?
+            raise(notConnectedErr()) :
+            pure(this.client.get()));
+
+    }
+
+    close(): Future<void> {
+
+        if (this.client.isNothing()) return pure(<void>undefined);
+        return fromCallback(cb => this.client.get().client.close(cb));
 
     }
 
 }
 
-const uriNotConfiguredError = (): Future<session.Store> =>
-    raise(new Error('tendril-session-mongodb: No uri specified!'));
+const uriNotConfiguredErr = () => new Error(
+    'tendril-session-mongodb: No uri specified!'
+);
 
-export const provider = new MongoDBProvider();
+const notConnectedErr = () => new Error(
+    'tendril-session-mongodb: Cannot checkout client, not initialized!'
+);
+
+export const provider = (expressSession: SessionFunc, opts?: object) =>
+    new MongoDBConnection(expressSession, opts);
